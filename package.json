@@ -1,0 +1,28 @@
+{
+  "name": "image-resizer",
+  "version": "1.0.0",
+  "description": "Image resizing helper using sharp package",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nvtuan305/image-resizer.git"
+  },
+  "keywords": [
+    "Image",
+    "resizing"
+  ],
+  "author": "Tuan Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nvtuan305/image-resizer/issues"
+  },
+  "homepage": "https://github.com/nvtuan305/image-resizer#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "sharp": "^0.18.4"
+  }
+}
