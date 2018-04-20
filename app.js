@@ -31,25 +31,28 @@ function resizeImage(filePath) {
 	const fileWithoutExt = path.basename(filePath, extension);
 	const dir = path.dirname(filePath);
     const fileName = "./"+dir+"/"+fileWithoutExt+"_thumb"+extension;
+	if(!fs.existsSync(fileName)){
+		try {
+			sharp(filePath)
+				.resize(200, 320, {
+					kernel: sharp.kernel.lanczos2,
+					interpolator: sharp.interpolator.nohalo
+				})
+				.crop()
+				.toFile(fileName)
+				.then(() => {
+					console.log('Resized image: ' + fileName);
+				})
+				.catch((error) => {
+					console.log('ERROR (' + fileName + '): ' + error);
+				});
 
-    try {
-        sharp(filePath)
-            .resize(200, 320, {
-                kernel: sharp.kernel.lanczos2,
-                interpolator: sharp.interpolator.nohalo
-            })
-			.crop()
-            .toFile(fileName)
-            .then(() => {
-                console.log('Resized image: ' + fileName);
-            })
-            .catch((error) => {
-                console.log('ERROR (' + fileName + '): ' + error);
-            });
-
-    } catch (error) {
-        console.log('ERROR: ' + error);
-    }
+		} catch (error) {
+			console.log('ERROR: ' + error);
+		}
+	}else{
+		console.log("thumb already exist");
+	}
 }
 
 
